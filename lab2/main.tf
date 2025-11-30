@@ -85,7 +85,7 @@ resource "azurerm_policy_assignment" "require_tag_assignment" {
   policy_definition_id = data.azurerm_policy_definition.require_tag.id
   display_name         = "Require Cost Center tag and its value on resources"
   description          = "Require Cost Center tag and its value on all resources in the resource group"
-  enforce              = true # Policy enforcement Enabled
+  enforce              = true
 
   parameters = jsonencode({
     "tagName" = {
