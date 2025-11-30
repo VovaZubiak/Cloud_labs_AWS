@@ -83,7 +83,6 @@ resource "azurerm_network_security_group" "nsg_secure" {
   location            = azurerm_resource_group.rg4.location
   resource_group_name = azurerm_resource_group.rg4.name
 
-  # Inbound Rule: Allow traffic from ASG on ports 80, 443
   security_rule {
     name                         = "AllowASG"
     priority                     = 100
@@ -98,17 +97,16 @@ resource "azurerm_network_security_group" "nsg_secure" {
     source_application_security_group_ids = [azurerm_application_security_group.asg_web.id]
   }
 
-  # Outbound Rule: Deny Internet Access
   security_rule {
     name                       = "DenyInternetOutbound"
     priority                   = 4096
     direction                  = "Outbound"
     access                     = "Deny"
-    protocol                   = "*" # Any protocol
+    protocol                   = "*"
     source_port_range          = "*"
     destination_port_range     = "*"
     source_address_prefix      = "*"
-    destination_address_prefix = "Internet" # Service Tag
+    destination_address_prefix = "Internet"
   }
 }
 
