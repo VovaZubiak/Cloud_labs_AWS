@@ -1,0 +1,1 @@
+admin_password = "524DGWEW#@!DDER"
