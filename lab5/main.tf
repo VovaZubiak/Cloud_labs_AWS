@@ -198,8 +198,8 @@ resource "azurerm_network_security_group" "nsg_secure" {
     access                       = "Allow"
     protocol                     = "*"
     source_port_range            = "*"
-    destination_port_range       = "3389" # RDP
-    source_address_prefix        = "172.16.0.0/16" # ManufacturingVnet IP Range
+    destination_port_range       = "3389"
+    source_address_prefix        = "172.16.0.0/16"
     destination_address_prefix   = "*"
   }
   
@@ -236,7 +236,7 @@ resource "azurerm_route" "route_deny" {
   resource_group_name    = azurerm_resource_group.rg5.name
   route_table_name       = azurerm_route_table.rt_block_internet.name
   address_prefix         = "0.0.0.0/0"
-  next_hop_type          = "None" # Блокує трафік, який не має явного маршруту
+  next_hop_type          = "None"
 }
 
 resource "azurerm_subnet_route_table_association" "route_assoc_mfg" {
